@@ -17,10 +17,14 @@ Using bulleted lists, describe the balanced accuracy scores and the precision an
 * Machine Learning Model 1:
   * Description of Model 1 Accuracy, Precision, and Recall scores.
 
+![model1](./Images/model1.png)
+
 
 
 * Machine Learning Model 2:
   * Description of Model 2 Accuracy, Precision, and Recall scores.
+
+![model2](./Images/model2.png)
 
 ## Summary
 
