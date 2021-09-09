@@ -2,34 +2,43 @@
 
 ## Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+Credit risk poses a classification problem that is imbalanced because healthy loans outnumber risky loans. In order to determine the best way to analyze the credit risk data, I compared two logistic regression model: the first analyzes the data as is and the second uses the random over sampler module to re-balance the data. Both models include a count of the target classes (value_counts), trained a logistic regression classifier, calculated the balanced accuracy score, generated a confusion matrix, and generated a classification report. 
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+Required libraries to import:
+```python
+import numpy as np
+import pandas as pd
+from pathlib import Path
+from sklearn.metrics import balanced_accuracy_score
+from sklearn.metrics import confusion_matrix
+from imblearn.metrics import classification_report_imbalanced
+
+import warnings
+warnings.filterwarnings('ignore')
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from imblearn.over_sampling import RandomOverSampler
+```
 
 ## Results
 
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
-
 * Machine Learning Model 1:
-  * Description of Model 1 Accuracy, Precision, and Recall scores.
+  * Balanced Accuracy Score: 95.2% accurate
+  * Precision: more precise for the healthy loans (most likely caused by the larger number of healthy loans)
+  * Recall: high for both, but higher for healhty loans
 
 ![model1](./Images/model1.png)
 
 
 
 * Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
+  * Balanced Accuracy Score: 99.4% accurate
+  * Precision: more precise for the healthy loans; risky loans are slightly less precise than the first model
+  * Recall: same for both, risky loans recall increased from the first model
 
 ![model2](./Images/model2.png)
 
 ## Summary
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
-
-If you do not recommend any of the models, please justify your reasoning.
+I would recommend using the second model. It has a higher accuracy score, similar precision, and higher recall information when compared with the first model.
